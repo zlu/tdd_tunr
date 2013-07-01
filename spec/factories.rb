@@ -5,12 +5,15 @@ FactoryGirl.define do
 		img_url 'http://cocktail.com'
 	end
 
-	# factory :user do
-	# 	id 1
-	# 	name 'zlu'
-	# end
+	factory :artist do
+		id 1
+		name Faker::Name.name
+	end
 
-	# factory :song do
-	#   album
-	# end
+	factory :song do
+		id 1
+		artist
+		album
+		name Faker::Name.name
+	end
 end

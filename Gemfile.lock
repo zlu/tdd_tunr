@@ -46,6 +46,8 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -122,6 +124,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   factory_girl_rails
+  faker
   jquery-rails
   rails (= 3.2.13)
   rspec-rails
