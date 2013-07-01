@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Album do
-	subject(:album) {Album.new(name: 'cocktail', img_url: 'cocktail.com')}
+	subject(:album) {build(:album)}
 
 	describe 'validation' do
 		it 'requires a name' do
