@@ -9,13 +9,15 @@
 #  updated_at :datetime         not null
 #
 
-class Album < ActiveRecord::Base
-  attr_accessible :img_url, :name
-
-  has_and_belongs_to_many :users
-  has_many :songs
-  has_many :artists, through: :songs
-
-  validates :name, presence: true
-  validates :img_url, presence: true
+FactoryGirl.define do
+  factory :album do
+    id 1
+    name Faker::Name.name
+    img_url Faker::Internet.url
+  end
+  factory :album2, class: Album do
+    id 2
+    name Faker::Name.name
+    img_url Faker::Internet.url
+  end
 end

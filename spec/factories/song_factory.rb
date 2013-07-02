@@ -10,12 +10,17 @@
 #  updated_at :datetime         not null
 #
 
-class Song < ActiveRecord::Base
-  attr_accessible :album_id, :artist_id, :name
-
-  validates_presence_of :name
-
-  belongs_to :artist
-  belongs_to :album
-  belongs_to :genre
+FactoryGirl.define do
+  factory :song do
+    id 1
+    artist
+    album
+    name Faker::Name.name
+  end
+  factory :song2, class: Song do
+    id 2
+    association :artist, factory: :artist2
+    association :album, factory: :album2
+    name Faker::Name.name
+  end
 end
