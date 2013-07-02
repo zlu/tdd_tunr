@@ -14,7 +14,12 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :albums
 
+  validates :name, presence: true
+  validates :email, presence: true
+
   def purchase(album)
-  	albums << album
+    unless album.in? self.albums
+      self.albums << album
+    end
   end
 end

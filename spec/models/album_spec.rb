@@ -16,23 +16,59 @@ describe Album do
 
 	describe 'validation' do
 		it 'requires a name' do
-			expect(subject).to be_valid 
-			subject.name = nil			
+			expect(subject).to be_valid
+			subject.name = nil
 			expect(subject).to be_invalid
 		end
 
 		it 'requires an img_url' do
-			expect(subject).to be_valid 
+			expect(subject).to be_valid
 			subject.img_url = nil
 			expect(subject).to be_invalid
 		end
 	end
 
 	describe 'associations' do
-		it 'knows owning users' do
-			expect(subject).to respond_to(:users)
+		context 'has many users' do
+			let(:user){ build(:user) }
+			let(:user2){ build(:user2) }
+			it 'knows owning users' do
+				expect(subject).to respond_to(:users)
+			end
+			it 'can have one user' do
+				lambda {
+					album.users << user
+				}.should change{album.users.size}.from(0).to(1)
+				album.users.should eq [user]
+			end
+			it 'can have multiple users' do
+				album.users << user
+				lambda {
+					album.users << user2
+				}.should change{album.users.size}.from(1).to(2)
+				album.users.should eq [user, user2]
+			end
 		end
 
-		it 'has songs'
+		context 'has many songs' do
+			let(:song){ build(:song) }
+			let(:song2){ build(:song2) }
+			it 'knows owning songs' do
+				expect(subject).to respond_to(:songs)
+			end
+			it 'can have one song' do
+				lambda {
+					album.songs << song
+				}.should change{album.songs.size}.from(0).to(1)
+				album.songs.should eq [song]
+			end
+			it 'can have multiple songs' do
+				album.songs << song
+				lambda {
+					album.songs << song2
+				}.should change{album.songs.size}.from(1).to(2)
+				album.songs.should eq [song, song2]
+			end
+		end
 	end
 end

@@ -17,4 +17,10 @@ FactoryGirl.define do
     album
     name Faker::Name.name
   end
+  factory :song2, class: Song do
+    id 2
+    association :artist, factory: :artist2
+    association :album, factory: :album2
+    name Faker::Name.name
+  end
 end

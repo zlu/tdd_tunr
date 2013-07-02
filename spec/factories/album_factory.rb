@@ -12,7 +12,12 @@
 FactoryGirl.define do
   factory :album do
     id 1
-    name 'cocktail'
-    img_url 'http://cocktail.com'
+    name Faker::Name.name
+    img_url Faker::Internet.url
+  end
+  factory :album2, class: Album do
+    id 2
+    name Faker::Name.name
+    img_url Faker::Internet.url
   end
 end
