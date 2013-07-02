@@ -16,15 +16,15 @@ describe Album do
 
 	describe 'validation' do
 		it 'requires a name' do
-			expect(subject).to be_valid
-			subject.name = nil
-			expect(subject).to be_invalid
+			expect(album).to be_valid
+			album.name = nil
+			expect(album).to be_invalid
 		end
 
 		it 'requires an img_url' do
-			expect(subject).to be_valid
-			subject.img_url = nil
-			expect(subject).to be_invalid
+			expect(album).to be_valid
+			album.img_url = nil
+			expect(album).to be_invalid
 		end
 	end
 

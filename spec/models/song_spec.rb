@@ -17,16 +17,34 @@ describe Song do
   subject(:song) {create(:song, name: 'overridding name')}
 
   describe 'validation' do
-    it 'requires a name'
+    it 'requires a name' do
+      expect(song).to be_valid
+      song.name = nil
+      expect(song).to be_invalid
+    end
   end
 
   describe 'association' do
-    it 'has an artist' do
-      expect(subject).to respond_to :artist
+    context 'belongs to an artist' do
+      it 'knows belonging to artist' do
+        expect(song).to respond_to :artist
+      end
+      it 'belongs to an artist' do
+        artist = build(:artist)
+        song.artist = artist
+        expect(song.artist).to be artist
+      end
     end
 
-    it 'has an album' do
-      expect(subject).to respond_to :album
+    context 'belongs to an album' do
+      it 'knows belonging to album' do
+        expect(song).to respond_to :album
+      end
+      it 'belongs to an album' do
+        album = build(:album)
+        song.album = album
+        expect(song.album).to be album
+      end
     end
   end
 end
