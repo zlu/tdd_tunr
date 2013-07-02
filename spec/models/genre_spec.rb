@@ -1,17 +1,15 @@
 # == Schema Information
 #
-# Table name: artists
+# Table name: genres
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
-#  url        :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Artist < ActiveRecord::Base
-  attr_accessible :name, :url
+require 'spec_helper'
 
-  has_many :songs
-  has_many :albums, through: :songs
+describe Genre do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

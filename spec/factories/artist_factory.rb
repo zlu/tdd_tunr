@@ -9,9 +9,9 @@
 #  updated_at :datetime         not null
 #
 
-class Artist < ActiveRecord::Base
-  attr_accessible :name, :url
-
-  has_many :songs
-  has_many :albums, through: :songs
+FactoryGirl.define do
+  factory :artist do
+    id 1
+    name Faker::Name.name
+  end
 end
