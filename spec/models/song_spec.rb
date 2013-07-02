@@ -46,5 +46,16 @@ describe Song do
         expect(song.album).to be album
       end
     end
+
+    context 'belongs to a genre' do
+      it 'knows belonging to genre' do
+        expect(song).to respond_to :genre
+      end
+      it 'belongs to an genre' do
+        genre = build(:genre)
+        song.genre = genre
+        expect(song.genre).to be genre
+      end
+    end
   end
 end
